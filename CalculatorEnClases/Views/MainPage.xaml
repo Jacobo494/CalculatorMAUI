@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorEnClases.Views.MainPage"
+             Title="Calculadora">
+
+    <ScrollView>
+        
+    <Grid RowDefinitions="*,Auto,*" Padding="30" RowSpacing="32">
+        <Border Grid.Row="0" StrokeThickness="3" Stroke="LightGray">
+            <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="Auto,*,Auto" 
+                  Padding="8"
+                  ColumnSpacing="8">
+                <Label Text="Importe:"
+                       VerticalOptions="Center"/>
+                <Entry
+                    Grid.Row="0" Grid.Column="1" Text="{Binding Importe}"/>
+                <Label Text="# Personas:"
+                       Grid.Row="1" 
+                       VerticalOptions="Center"/>
+                <Entry
+                    Grid.Row="1" Grid.Column="1" Text="{Binding NumeroDePersonas}"/>
+                <Stepper
+                    Grid.Row="1" Grid.Column="2"
+                    Minimum="1"
+                    Maximum="20"
+                    Value="{Binding NumeroDePersonas}"/>
+
+                <HorizontalStackLayout Grid.Row="2" Grid.Column="1" 
+                                       VerticalOptions="Center" HorizontalOptions="Center" 
+                                       Padding="16"
+                                       Spacing="16">
+                    <Button Text="8%"
+                            Command="{Binding PorcentajeDePropinaCommand}"
+                            CommandParameter="8"/>
+                    <Button Text="10%"
+                             Command="{Binding PorcentajeDePropinaCommand}"
+                             CommandParameter="10"/>
+                    <Button Text="12.5%"
+                             Command="{Binding PorcentajeDePropinaCommand}"
+                             CommandParameter="12.5"/>
+                    <Button Text="15%"
+                             Command="{Binding PorcentajeDePropinaCommand}"
+                             CommandParameter="15"/>
+
+                </HorizontalStackLayout>
+                <Label Text="# Propina:" Grid.Row="3"/>
+                    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding PorcentajeDePropina}"/>
+                <Stepper Grid.Row="3" Grid.Column="3"
+                         Maximum="50"
+                         Increment="0.5"
+                         Value="{Binding PorcentajeDePropina}"/>
+            </Grid>
+        </Border>
+        
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Padding="16" Spacing="32">
+                <Button Text="Calcular" BackgroundColor="LightBlue" Command="{Binding CalcularCommand}"/>
+                <Button Text="Limpiar" BackgroundColor="LightGray" Command="{Binding LimpiarCommand}" />
+
+        </HorizontalStackLayout>
+
+            <Border Grid.Row="2" Stroke="LightBlue" StrokeThickness="3" >
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" Padding="8">
+                    <Label Text="Importe de propina:"/>
+                    <Label Text="{Binding Propina}" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="End"/>
+                    <Label Text="Propina por persona:" Grid.Row="1"/>
+                    <Label Text="{Binding PropinaPorPersona}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End"/>
+                    <Label Text="Importe total:" Grid.Row="2"/>
+                    <Label Text="{Binding ImporteConPropina}" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End"/>
+                    <Label Text="Importe por persona:" Grid.Row="3"/>
+                    <Label Text="{Binding ImportePorPersona}" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="End"/>
+                </Grid>
+            </Border>
+
+        </Grid>
+ </ScrollView>
+</ContentPage>
